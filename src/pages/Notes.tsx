@@ -16,31 +16,51 @@ const Notes = () => {
 
   if (loading) return <Loading />;
   const sections = [
-    {
-      title: 'Class 11 - Physics',
-      chapters: ['Physical World', 'Units & Measurements', 'Kinematics', 'Laws of Motion', 'Work, Energy and Power'],
-    },
-    {
-      title: 'Class 11 - Chemistry',
-      chapters: ['Some Basic Concepts of Chemistry', 'Structure of Atom', 'Periodic Classification', 'Chemical Bonding', 'States of Matter'],
-    },
-    {
-      title: 'Class 11 - Mathematics',
-      chapters: ['Sets', 'Relations and Functions', 'Trigonometric Functions', 'Complex Numbers', 'Linear Inequalities'],
-    },
-    {
-      title: 'Class 12 - Physics',
-      chapters: ['Electrostatics', 'Current Electricity', 'Magnetism', 'Electromagnetic Induction', 'Alternating Current'],
-    },
-    {
-      title: 'Class 12 - Chemistry',
-      chapters: ['Solid State', 'Solutions', 'Electrochemistry', 'Chemical Kinetics', 'Surface Chemistry'],
-    },
-    {
-      title: 'Class 12 - Mathematics',
-      chapters: ['Relations and Functions', 'Inverse Trigonometric Functions', 'Matrices', 'Determinants', 'Continuity and Differentiability'],
-    },
-  ];
+  {
+    title: 'Class 11 - Physics',
+    chapters: [
+      { name: 'Fluid Mechanics', pdfname: 'fluid.pdf' },
+      { name: 'Heat & Temperature', pdfname: 'heatandtemperature.pdf' },
+      { name: 'Kinetic Theory of Gases', pdfname: 'ktg.pdf' },
+      { name: 'Mechanical Properties of Solids', pdfname: 'mechanicalprop.pdf' },
+      { name: 'Simple Harmonic Motion', pdfname: 'shm.pdf' },
+      { name: 'Thermodynamics', pdfname: 'thermodynamics .pdf' },
+      { name: 'Waves', pdfname: 'waves.pdf' },
+    ],
+  },
+  {
+    title: 'Class 11 - Chemistry',
+    chapters: [
+      
+    ],
+  },
+  {
+    title: 'Class 11 - Mathematics',
+    chapters: [
+      
+    ],
+  },
+  {
+    title: 'Class 12 - Physics',
+    chapters: [
+      { name: 'Electrostatics', pdfname: 'electrostatics .pdf' },
+      { name: 'Current Electricity', pdfname: 'current electricity.pdf' },
+      { name: 'Capacitor', pdfname: 'capacitor.pdf' },
+    ],
+  },
+  {
+    title: 'Class 12 - Chemistry',
+    chapters: [
+      
+    ],
+  },
+  {
+    title: 'Class 12 - Mathematics',
+    chapters: [
+      
+    ],
+  },
+];
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
@@ -72,11 +92,11 @@ const Notes = () => {
                         <tr key={i} className="hover:bg-gray-50">
                         <td className="px-4 py-2 border-b border-gray-200">{i + 1}</td>
                         <td className="px-4 py-2 border-b border-gray-200">
-                            {chapter.length > 17 ? `${chapter.slice(0, 17)}...` : chapter}
+                            {chapter.name.length > 17 ? `${chapter.name.slice(0, 17)}...` : chapter.name}
                         </td>
                         <td className="px-4 py-2 border-b border-gray-200">
                             <a
-                            href="/files/2023CE10413_research.pdf"
+                            href={`/files/${chapter.pdfname}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
