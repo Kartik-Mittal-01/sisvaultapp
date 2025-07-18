@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loading from '../components/Loading';
 
 const Notes = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Show loading for 1 second
+
+    return () => clearTimeout(timeout); // Cleanup
+  }, []);
+
+  if (loading) return <Loading />;
   const sections = [
     {
       title: 'Class 11 - Physics',
@@ -64,7 +76,7 @@ const Notes = () => {
                         </td>
                         <td className="px-4 py-2 border-b border-gray-200">
                             <a
-                            href="/files/2023CE10413_resume.pdf"
+                            href="/files/2023CE10413_research.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
